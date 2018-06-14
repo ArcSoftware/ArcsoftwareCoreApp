@@ -1,20 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace ArcsoftwareCoreApp.Controllers
 {
     [Produces("application/json")]
-    [Route("api/")]
+    
     public class ApiController : Controller
     {
-        [HttpPost("{id:int}")]
-        public int ShowProduct(int id)
+        [HttpGet]
+        [Route("/v1/trustaccounts/lookupids")]
+        public string GetLookUpId(string accountNumber, string routingNumber)
         {
-            return id;
+            return null;
+        }
+
+        [HttpGet]
+        [Route("/v1/trustaccounts/partnerids")]
+        public int? GetBankAccountId(string lookupId)
+        {
+            return null;
         }
     }
 }
+//To Run core iis service, proxy must be set by the following:
+//$_ npm install -g iisexpress-proxy
+//$_ iisexpress-proxy 50154 to 81
+//That allows for IP usage on VPN vs localhost. 
